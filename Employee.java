@@ -4,7 +4,7 @@ public class Employee {
     private double salary; 
     private int workHours;
     private int hireYear;
-
+ 
     // Constructor: Kurucu metot
     // Employee(name,salary,workHours,hireYear) : Kurucu metot olup 4 parametre
     // alacaktır.
@@ -46,40 +46,57 @@ public class Employee {
     public void setHireYear(int hireYear) {
         this.hireYear = hireYear;
     }
-
+    double a;
     public double tax(){
-        if(salary < 1000 || salary >0) 
-            return salary;
-        else
-            return salary *0.03;
+        if(salary >0  && salary < 1000  ) 
+            return 0.0;
+        else{
+            a =salary * 0.03;
+            return a;
+        }
     }
 
-    public int bonus() {
-        if (workHours > 40) {
-            return (workHours - 40) * 30;			
-		} else {
-			return workHours;
-		}
-    }
-
-    public double raiseSalary()  {
-        int year =2021; 
-        if (year - hireYear < 10 ) {
-            return salary * 0.05;
-        } else if (year - hireYear > 9 && year - hireYear < 20) {
-            return  salary * 0.1;
-        } else  (year - hireYear > 19) 
-            return  salary * 0.15;
+    public double bonus() {
         
+        if (workHours <= 40) {
+            a=0;
+            return a;
+        }
+        else if (workHours > 40) {
+            workHours -= 40;
+            a = workHours * 30;
+            return a;
+        }else
+            return 0;
     }
+    
+    public double raiseSalary() {
+         int year =2021;
+         int workYear = 2021 - hireYear;
+        if (workYear < 10 && workYear >= 0) {
+            a = salary * 0.05;
+            
+			return a;
+		} else if (workYear > 9 && workYear < 20) {
+            a = salary * 0.1;
+			return a;
+		} else if (workYear > 19) {
+            a = salary * 0.15;
+			return a;
+		} 
+        return  a;
+    }
+            
 
     public double totalSalary() {
-        return taxBonusSalary() + raiseSalary();
+         a = taxBonusSalary() + raiseSalary();
+        return a;
 
     }
 
     public double taxBonusSalary() {
-        return salary + bonus() - tax();
+         a = (salary + bonus()) - tax();
+        return a;
     }
 
     public String toString() {
