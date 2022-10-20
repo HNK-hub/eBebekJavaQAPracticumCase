@@ -1,3 +1,4 @@
+
 public class Employee {
     //Istenilen 4 nitelik
     private String name;
@@ -68,14 +69,12 @@ public class Employee {
             return a;
         }else
             return 0;
-    }
-    
+    } 
     public double raiseSalary() {
          int year =2021;
-         int workYear = 2021 - hireYear;
+         int workYear = year - hireYear;
         if (workYear < 10 && workYear >= 0) {
             a = salary * 0.05;
-            
 			return a;
 		} else if (workYear > 9 && workYear < 20) {
             a = salary * 0.1;
@@ -84,22 +83,22 @@ public class Employee {
             a = salary * 0.15;
 			return a;
 		} 
+        double taxBonus =(a + salary +bonus()-tax());
+        double newSalary =(a + salary +bonus());
+		System.out.println("Vergi ve Bonuslar ile birlikte maaş: " + taxBonus);
+        System.out.println("Toplam Maaş: " + newSalary);
         return  a;
-    }
-            
-
-    public double totalSalary() {
-         a = taxBonusSalary() + raiseSalary();
-        return a;
-
-    }
-
-    public double taxBonusSalary() {
-         a = (salary + bonus()) - tax();
-        return a;
     }
 
     public String toString() {
+        System.out.println("Adı: " + getName());
+		System.out.println("Maaşı: " + getSalary());
+		System.out.println("Çalışma Saati: " + getWorkHours());
+		System.out.println("Başlangıç Yılı: " + getHireYear());
+		System.out.println("Vergi: " + tax());
+		System.out.println("Bonus: " + bonus());
+		System.out.println("Maaş artışı: " + raiseSalary());
+
         return "Employee Name: " + this.name + " Salary: " + this.salary + " Work hours: " + this.workHours
                 + " Hire Year: " + this.hireYear;
     }
