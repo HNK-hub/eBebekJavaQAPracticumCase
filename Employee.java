@@ -63,14 +63,14 @@ public class Employee {
     }
 
     public double raiseSalary()  {
-        int year =2021; 
-        if (year - hireYear < 10 ) {
-            return salary * 0.05;
-        } else if (year - hireYear > 9 && year - hireYear < 20) {
-            return  salary * 0.1;
-        } else  (year - hireYear > 19) 
-            return  salary * 0.15;
-        
+        int totalWorkYear = 2021 - getHireYear();
+        if (totalWorkYear > 19) {
+            return bonus() + (bonus() * 0.15);
+        }
+        if (totalWorkYear > 9) {
+            return bonus() + (bonus() * 0.10);
+        }
+        return bonus() + (bonus() * 0.5);
     }
 
     public double totalSalary() {
