@@ -69,8 +69,7 @@ public class Employee {
             return a;
         }else
             return 0;
-    }
-    
+    } 
     public double raiseSalary() {
          int year =2021;
          int workYear = year - hireYear;
@@ -84,7 +83,10 @@ public class Employee {
             a = salary * 0.15;
 			return a;
 		} 
-        // double newSalary =(a + salary +bonus()-tax());
+        double taxBonus =(a + salary +bonus()-tax());
+        double newSalary =(a + salary +bonus());
+		System.out.println("Vergi ve Bonuslar ile birlikte maaş: " + taxBonus);
+        System.out.println("Toplam Maaş: " + newSalary);
         return  a;
     }
 
@@ -96,8 +98,6 @@ public class Employee {
 		System.out.println("Vergi: " + tax());
 		System.out.println("Bonus: " + bonus());
 		System.out.println("Maaş artışı: " + raiseSalary());
-		System.out.println("Vergi ve Bonuslar ile birlikte maaş: " );
-		System.out.println("Toplam Maaş: ");
 
         return "Employee Name: " + this.name + " Salary: " + this.salary + " Work hours: " + this.workHours
                 + " Hire Year: " + this.hireYear;
