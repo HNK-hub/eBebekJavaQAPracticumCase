@@ -1,107 +1,56 @@
 
 public class Employee {
-    // Istenilen 4 nitelik
-    private String name;
-    private double salary;
-    private int workHours;
-    private int hireYear;
+	private String name;
+	private double salary;
+	private int workHours;
+	private int hireYear;
 
-    // Constructor: Kurucu metot
-    // Employee(name,salary,workHours,hireYear) : Kurucu metot olup 4 parametre
-    // alacaktır.
-    public Employee(String name, double salary, int workHours, int hireYear) {
-        this.name = name;
-        this.salary = salary;
-        this.workHours = workHours;
-        this.hireYear = hireYear;
-    }
+	public Employee(String name, double salary, int workHours, int hireYear) {
+		this.name = name;
+		this.salary = salary;
+		this.workHours = workHours;
+		this.hireYear = hireYear;
+	}
 
-    // Getter Setter diger sınıfta okuma ve yazma işlemini yapabilmek için
-    // kullanıldı.
-    public String getName() {
-        return this.name;
-    }
+	public double tax() {
+		double a = 0;
+		if (salary > 1000) {
+			a = (salary * 3) / 100;
+		}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+		return a;
 
-    public double getSalary() {
-        return this.salary;
-    }
+	}
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
+	public double bonus() {
+		double b = 0;
+		if (workHours > 40) {
+			b = (workHours - 40) * 30;
 
-    public int getWorkHours() {
-        return this.workHours;
-    }
+		}
 
-    public void setWorkHours(int workHours) {
-        this.workHours = workHours;
-    }
+		return b;
+	}
 
-    public int getHireYear() {
-        return this.hireYear;
-    }
+	public double raiseSalary() {
+		double raiseSalary = 0;
 
-    public void setHireYear(int hireYear) {
-        this.hireYear = hireYear;
-    }
+		if (2021 - hireYear < 10) {
+			raiseSalary = (salary * 5) / 100;
+		} else if (9 < 2021 - hireYear && 2021 - hireYear < 20) {
+			raiseSalary = (salary * 10) / 100;
+		} else if (19 < 2021 - hireYear) {
+			raiseSalary = (salary * 15) / 100;
+		}
+		return raiseSalary;
 
-    double a;
+	}
 
-    public double tax() {
-        if (salary > 0 && salary < 1000)
-            return 0.0;
-        else {
-            a = salary * 0.03;
-            return a;
-        }
-    }
-
-    public double bonus() {
-
-        if (workHours <= 40) {
-            a = 0;
-            return a;
-        } else if (workHours > 40) {
-            workHours -= 40;
-            a = workHours * 30;
-            return a;
-        } else
-            return 0;
-    }
-
-    public double raiseSalary() {
-        int year = 2021;
-        int workYear = year - hireYear;
-        
-        if (workYear < 10 && workYear >= 0) {
-            a = salary * 0.05;
-            return a;
-        } else if (workYear > 9 && workYear < 20) {
-            a = salary * 0.1;
-            return a;
-        } else if (workYear > 19) {
-            a = salary * 0.15;
-            return a;
-        }
-        return a;
-    }
-
-    public String toString() {
-        System.out.println("Adı: " + getName());
-        System.out.println("Maaşı: " + getSalary());
-        System.out.println("Çalışma Saati: " + getWorkHours());
-        System.out.println("Başlangıç Yılı: " + getHireYear());
-        System.out.println("Vergi: " + tax());
-        System.out.println("Bonus: " + bonus());
-        System.out.println("Maaş artışı: " + raiseSalary());
-        System.out.println("Vergi ve Bonuslar ile birlikte maaş: " +  (salary + bonus() - tax()));
-        System.out.println("Toplam Maaş: " +  ((salary + bonus()+ raiseSalary())-tax() ));
-        return "Employee Name: " + this.name + " Salary: " + this.salary + " Work hours: " + this.workHours
-                + " Hire Year: " + this.hireYear;
-    }
+	public String toString() {
+		String employee = ("Adi:" + name + "\nMaasi:" + salary + "\nCalisma Saati:" + workHours + "\nBaslangic Yili:"
+				+ hireYear + "\nVergi:" + tax() + "\nBonus:" + bonus() + "\nMaas Artisi:" + raiseSalary()
+				+ "\nVergi ve Bonuslar ile birlikte maas:" + (salary + bonus() - tax()) + "\nToplam Maas:"
+				+ (salary + bonus() + raiseSalary() - tax()));
+		return employee;
+	}
 }
