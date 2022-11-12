@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 975e2bcf7e3551f0a7ce777d0662476b87b17221
 public class Employee {
 	private String name;
 	private double salary;
@@ -52,4 +56,8 @@ public class Employee {
 				+ (salary + bonus() + raiseSalary() - tax()));
 		return employee;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 975e2bcf7e3551f0a7ce777d0662476b87b17221
